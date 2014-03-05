@@ -1,12 +1,12 @@
-# Network Graph Add-on for Vaadin 7
+# TimelineJS Add-on for Vaadin 7
 
-Network Graph is an UI component add-on for Vaadin 7 based on the VISUAL INTERACTION SYSTEM Java Script library ([vis.js](http://visjs.org)).
+Timelinejs is an UI component add-on for Vaadin 7 based on the Timelinejs Java Script library ([timeline.js](http://timeline.knightlab.com/)).
 
-![Sample 1](/img/sample01.png)
+
 
 ## Online demo
 
-Currently no add-on demo available. See pure JS demo at [vis.js](http://visjs.org/#gallery).
+Currently no add-on demo available. See pure JS demo at [timeline.js](http://timeline.knightlab.com/).
 
 ## Download release
 
