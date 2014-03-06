@@ -7,18 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.server.ResourceReference;
-import com.vaadin.server.StreamResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import de.fatalix.vaadin.addon.timelinejs.JSONStreamSource;
 import de.fatalix.vaadin.addon.timelinejs.TimelineJS;
-import java.util.Iterator;
-import java.util.List;
 
 
 @Theme("demo")
@@ -39,7 +33,8 @@ public class DemoUI extends UI {
             
             
             TimelineJS timelineJS = new TimelineJS();
-            timelineJS.setSizeFull();
+            timelineJS.setHeight("500px");
+            timelineJS.setWidth("100%");
             // Show it in the middle of the screen
             final VerticalLayout layout = new VerticalLayout();
             layout.setStyleName("demoContentLayout");

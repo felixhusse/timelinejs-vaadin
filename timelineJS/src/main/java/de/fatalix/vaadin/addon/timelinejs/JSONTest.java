@@ -16,9 +16,6 @@
 
 package de.fatalix.vaadin.addon.timelinejs;
 
-import com.vaadin.annotations.JavaScript;
-import com.vaadin.annotations.StyleSheet;
-import com.vaadin.ui.AbstractJavaScriptComponent;
 import de.fatalix.vaadin.addon.timelinejs.json.Timeline;
 import de.fatalix.vaadin.addon.timelinejs.json.TimelineData;
 import de.fatalix.vaadin.addon.timelinejs.json.TimelineEvent;
@@ -31,25 +28,15 @@ import org.json.JSONObject;
  *
  * @author felix.husse
  */
-@JavaScript({"vaadin://timelinejs/jquery-1.7.2.min.js","vaadin://timelinejs/storyjs-embed.js","timeline-connector.js"})
-@StyleSheet({"vaadin://timelinecss/timeline.css"})
-public class TimelineJS extends AbstractJavaScriptComponent{
+public class JSONTest {
     
-    
-    
-    public TimelineJS() {
-        JSONObject json = new JSONObject(generateSampleData());
-        String jsonResult = json.toString();
-        getState().data = jsonResult;
+    public static void main(String[] args) {
+        TimelineData data = generateSampleData();        
+        JSONObject json = new JSONObject(data);
+        System.out.println("RESULT JSON: " + json.toString());
     }
     
-    
-    
-    public void init()  {
-        
-    }
-    
-    private TimelineData generateSampleData() {
+    private static TimelineData generateSampleData() {
         TimelineData data = new TimelineData();
         
         Timeline timeline = new Timeline();
@@ -64,23 +51,15 @@ public class TimelineJS extends AbstractJavaScriptComponent{
         return data;
     }
     
-    private Collection<TimelineEvent> generateEvents() {
+    private static Collection<TimelineEvent> generateEvents() {
         Collection<TimelineEvent> events = new ArrayList<>();
         TimelineEvent event1 = new TimelineEvent();
         event1.setHeadline("Test Data").setText("<p>THIS IS A TEST</p>").setStartDate(new DateTime().minusMonths(2).plusDays(3));
         
         TimelineEvent event2 = new TimelineEvent();
-        event2.setHeadline("Test Data 2").setText("<p>THIS IS A TEST</p>").setStartDate(new DateTime().minusMonths(2).plusDays(1)).setEndDate(new DateTime().minusMonths(2).plusDays(8));
+        event2.setHeadline("Test Data 2").setText("<p>THIS IS A TEST</p>").setStartDate(new DateTime().minusMonths(2).plusDays(1)).setEndDate(new DateTime().minusMonths(2).plusDays(6));
         events.add(event1);
         events.add(event2);
         return events;
     }
-    
-    @Override
-    protected TimelineJSState getState() {
-        return (TimelineJSState) super.getState(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
 }

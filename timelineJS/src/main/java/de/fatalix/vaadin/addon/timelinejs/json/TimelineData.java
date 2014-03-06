@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package de.fatalix.vaadin.addon.timelinejs;
-
-import com.vaadin.shared.ui.JavaScriptComponentState;
+package de.fatalix.vaadin.addon.timelinejs.json;
 
 /**
  *
  * @author felix.husse
  */
-public class TimelineJSState extends JavaScriptComponentState{
-    
-    public String data;
+public class TimelineData {
+    private Timeline timeline;
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
+    }
     
 }

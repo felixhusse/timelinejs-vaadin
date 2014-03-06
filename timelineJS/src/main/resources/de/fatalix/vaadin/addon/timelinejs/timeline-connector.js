@@ -17,14 +17,14 @@ window.de_fatalix_vaadin_addon_timelinejs_TimelineJS = function() {
     var e = this.getElement();
     
     this.onStateChange = function() {
-
+        var timelineData = JSON.parse(this.getState().data);
         e.innerHTML = "<div id='my-timeline'></div>";
         
         var timeline_config = {
             type: "timeline",
             width: "100%",
             height: "100%",
-            source: this.getState().resourceURL,
+            source: timelineData,
             embed_id: "my-timeline"
         };
         createStoryJS(timeline_config);
