@@ -16,37 +16,45 @@
 
 package de.fatalix.vaadin.addon.timelinejs.json;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+
 
 /**
  *
  * @author felix.husse
  */
 public class TimelineEvent {
-    private static final DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY,MM,dd");
-    
     private String startDate;
     private String endDate;
     private String headline;
     private String text;
+    private TimelineAsset asset;
 
     public String getStartDate() {
         return startDate;
     }
-
-    public TimelineEvent setStartDate(DateTime startDate) {
-        this.startDate = startDate.toString(fmt);
+    
+    /**
+     * 
+     * @param startDate YYYY,MM,dd example: 2014,1,12
+     * @return 
+     */
+    public TimelineEvent setStartDate(String startDate) {
+        this.startDate = startDate;
         return this;
     }
 
     public String getEndDate() {
         return endDate;
     }
-
-    public TimelineEvent setEndDate(DateTime endDate) {
-        this.endDate = endDate.toString(fmt);
+    
+    /**
+     * EndDate is optional. If not set, event is single point.
+     * 
+     * @param endDate YYYY,MM,dd example: 2014,1,12
+     * @return 
+     */
+    public TimelineEvent setEndDate(String endDate) {
+        this.endDate = endDate;
         return this;
     }
 
@@ -67,6 +75,14 @@ public class TimelineEvent {
         this.text = text;
         return this;
     }
-    
+
+    public TimelineAsset getAsset() {
+        return asset;
+    }
+
+    public TimelineEvent setAsset(TimelineAsset asset) {
+        this.asset = asset;
+        return this;
+    }
     
 }

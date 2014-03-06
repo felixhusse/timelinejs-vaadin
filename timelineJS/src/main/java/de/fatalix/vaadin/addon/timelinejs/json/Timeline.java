@@ -17,16 +17,12 @@
 package de.fatalix.vaadin.addon.timelinejs.json;
 
 import java.util.Collection;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 /**
  *
  * @author felix.husse
  */
 public class Timeline {
-    private static final DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY,MM,dd");
     private String headline;
     private String type;
     private String text;
@@ -72,9 +68,14 @@ public class Timeline {
     public String getStartDate() {
         return startDate;
     }
-
-    public Timeline setStartDate(DateTime startDate) {
-        this.startDate = startDate.toString(fmt);
+    
+    /**
+     * 
+     * @param startDate YYYY,MM,dd example: 2014,1,12
+     * @return 
+     */
+    public Timeline setStartDate(String startDate) {
+        this.startDate = startDate;
         return this;
     }
     

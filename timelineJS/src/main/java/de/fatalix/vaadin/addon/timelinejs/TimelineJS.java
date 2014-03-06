@@ -18,13 +18,9 @@ package de.fatalix.vaadin.addon.timelinejs;
 
 import com.vaadin.annotations.JavaScript;
 import com.vaadin.annotations.StyleSheet;
+import com.vaadin.server.Resource;
 import com.vaadin.ui.AbstractJavaScriptComponent;
-import de.fatalix.vaadin.addon.timelinejs.json.Timeline;
 import de.fatalix.vaadin.addon.timelinejs.json.TimelineData;
-import de.fatalix.vaadin.addon.timelinejs.json.TimelineEvent;
-import java.util.ArrayList;
-import java.util.Collection;
-import org.joda.time.DateTime;
 import org.json.JSONObject;
 
 /**
@@ -35,45 +31,16 @@ import org.json.JSONObject;
 @StyleSheet({"vaadin://timelinecss/timeline.css"})
 public class TimelineJS extends AbstractJavaScriptComponent{
     
+    private static int resource_counter = 0;
     
-    
-    public TimelineJS() {
-        JSONObject json = new JSONObject(generateSampleData());
+    /**
+     * 
+     * @param data 
+     */
+    public TimelineJS(TimelineData data) {
+        JSONObject json = new JSONObject(data);
         String jsonResult = json.toString();
         getState().data = jsonResult;
-    }
-    
-    
-    
-    public void init()  {
-        
-    }
-    
-    private TimelineData generateSampleData() {
-        TimelineData data = new TimelineData();
-        
-        Timeline timeline = new Timeline();
-        timeline.setHeadline("QA Releases")
-                .setText("<li>Feature</li> <li>Feature</li>")
-                .setType("default")
-                .setStartDate(new DateTime().minusMonths(2))
-                .setDate(generateEvents());
-        
-        data.setTimeline(timeline);
-        
-        return data;
-    }
-    
-    private Collection<TimelineEvent> generateEvents() {
-        Collection<TimelineEvent> events = new ArrayList<>();
-        TimelineEvent event1 = new TimelineEvent();
-        event1.setHeadline("Test Data").setText("<p>THIS IS A TEST</p>").setStartDate(new DateTime().minusMonths(2).plusDays(3));
-        
-        TimelineEvent event2 = new TimelineEvent();
-        event2.setHeadline("Test Data 2").setText("<p>THIS IS A TEST</p>").setStartDate(new DateTime().minusMonths(2).plusDays(1)).setEndDate(new DateTime().minusMonths(2).plusDays(8));
-        events.add(event1);
-        events.add(event2);
-        return events;
     }
     
     @Override
